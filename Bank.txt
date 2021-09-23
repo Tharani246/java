@@ -1,0 +1,32 @@
+class BankAccount{
+      String customerId;
+      String accountId;
+      double balance;
+      public BankAccount(String customerId,String accountId,double balance){
+            this.customerId = customerId;
+            this.accountId  = accountId;
+            this.balance    = balance;
+      }
+      public  double DepositAmount(double amount){
+            this.balance = this.balance+amount;
+            return this.balance;
+      }
+      public  double WithdrawAmount(double amount){
+            if(this.balance > amount){
+             		 this.balance = this.balance - amount;
+             		 return this.balance;
+	     }
+	        else{
+			          return -1;
+	     }
+      }
+      public  double AddInterest(double percent){
+            this.balance = this.balance+(this.balance*(percent/100));
+            return this.balance;
+      }
+}
+      
+
+             
+            
+      
