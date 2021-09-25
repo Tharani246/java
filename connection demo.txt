@@ -1,0 +1,33 @@
+class Connection{
+	String connId;
+	String customerId;
+	String customerEmail;
+	double balance;
+	public Connection(String connId,String customerId,String customerEmail,double balance){
+		this.connId = connId;
+		this.customerId = customerId;
+		this.customerEmail = customerEmail;
+		this.balance = balance;
+	}
+}
+public class ConnectionDemo {
+	public static void main(String[] args){
+		Connection ar[] = new Connection[3];
+		ar[0] = new Connection("C123","ci123","customer1@org.com",5000);
+		ar[1] = new Connection("C456","ci123","customer2@org.com",10000);
+		ar[2] = new Connection("C789","ci754","customer3@org.com",20000);
+		String CI = "ci123";
+		getAverageBalance(ar,CI);
+	}
+	public static void getAverageBalance(Connection ar[],String CI){
+		double average = 0;
+		int count = 0;
+		for (int i = 0;i<3;i++){
+			if(ar[i].customerId.equals(CI)){
+				average = average + ar[i].balance;
+				count++;
+			}
+		}
+		System.out.println("Average balance for given customerId is :"+(average/count));
+	}
+}		
