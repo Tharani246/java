@@ -1,0 +1,156 @@
+import java.util.*;
+class Main
+{
+	public static void main(String[] args)
+	{
+		ArrayList<ArrayList<String>> employeelist = new ArrayList<ArrayList<String>>();
+		System.out.println("Enter the details of Employees in the Organization");
+		Scanner input = new Scanner(System.in);
+		String Line="";
+		int c=1;
+		for(int i=0;c>0;i++)
+		{
+			employeelist.add(new ArrayList<String>());
+			for(int j=0;c>0 && j<5;j++)
+			{
+				switch(j)
+				{
+				case 0:
+				{
+					System.out.print("Enter the Name of the employee :");
+					break;
+				}
+				case 1:
+				{
+					System.out.print("Enter the Employee ID of the employee :");
+					break;
+				}
+				case 2:
+				{
+					System.out.print("Enter the Date of Birth of the employee :");
+					break;
+				}
+				case 3:
+				{
+					System.out.print("Enter the Salary of the employee :");
+					break;
+				}
+				case 4:
+				{
+					System.out.print("Enter the Designation of the employee :");
+					break;
+				}
+				}
+				Line=input.nextLine();
+				c=Line.length();
+				employeelist.get(i).add(j,Line);
+			}
+		}
+		printemployeedetails(employeelist);
+		System.out.println("Select an action\n"
+				+ "[1]. Check whether an Employee exists or not\n"
+				+ "[2]. Add Employee details to the Employee Details of Organization");
+		Line=input.next();
+		switch(Integer.parseInt(Line))
+		{
+		case 1 :
+		{
+			System.out.println("Enter the Name of the Employee to check");
+			Line=input.next();
+			for(ArrayList<String> list :employeelist)
+			{
+				if(list.get(0).equals(Line))
+				{
+					System.out.println("Given Employee exists");
+					for(String detail : list)
+					{
+						System.out.print(detail+"  ");
+					}
+					System.out.println("\nPress Y to delete the employee details and N to exit");
+					Line=input.next();
+					if(Line=="Y")
+					{
+						employeelist.remove(list);
+						System.out.println("Employee details removed");
+					}
+				}
+				else
+				{
+					System.out.println("Given Employee does not exist");
+				}
+				break;
+			}
+			break;
+		}
+		case 2 :
+		{
+			addemployee(employeelist);
+			break;
+		}
+		default :
+		{
+			System.out.println("Invalid Selection");
+			break;
+		}
+		}
+		input.close();
+	}
+	public static void printemployeedetails(ArrayList<ArrayList<String>> employeelist)
+	{
+		for(ArrayList<String> list :employeelist)
+		{
+			
+			Iterator<String> detail = list.iterator();
+			while(detail.hasNext())
+			{
+				String str = detail.next();
+				if(str!="")
+				{
+					System.out.print(str+" , ");
+				}
+			}
+			System.out.print("\n");
+		}
+	}
+	public static void addemployee(ArrayList<ArrayList<String>> employeelist)
+	{
+		Scanner input = new Scanner(System.in);
+		String Line="";
+		int t=1;
+		while(t==1)
+		{
+			ArrayList<String> list1 = new ArrayList<String>();
+			System.out.println("Enter the Name of the employee :");
+			Line=input.next();
+			for(ArrayList<String> li : employeelist)
+			{
+				if(li.get(0).equals(Line))
+				{
+					System.out.println("Duplicate entry detected which is not allowed");
+					input.close();
+					return;
+				}
+			}
+			list1.add(Line);
+			System.out.println("Enter the Employee ID of the employee :");
+			Line=input.next();
+			list1.add(Line);
+			System.out.println("Enter the Date of Birth of the employee :");
+			Line=input.next();
+			list1.add(Line);
+			System.out.println("Enter the Salary of the employee :");
+			Line=input.next();
+			list1.add(Line);
+			System.out.println("Enter the Designation of the employee :");
+			Line=input.next();
+			list1.add(Line);
+			employeelist.add(list1);
+			System.out.println("Employee details added successfully");
+			t=0;
+		}
+		input.close();
+	}
+}
+
+
+		
