@@ -1,0 +1,50 @@
+import java.util.*;
+class Consonants{
+	public static void main(String[] args){
+		HashMap<Character,Integer>map = new HashMap<Character,Integer>();
+		Scanner input = new Scanner(System.in);
+		String line = input.nextLine();
+		while(line != ""){
+			for(char i=65;i<91;i++){
+				map.put(i,0);
+			}
+			for(char a:line.toCharArray())
+			{
+				a = Character.toUpperCase(a);
+				if((a>64 && a<91))
+				{
+					if( a!= 'A' && a!='E' && a!='I' && a!= 'O' && a!= 'U'){
+						map.put(a,map.get(a)+1);
+					}
+				}
+			}
+			int t=0;
+			for(int k : map.values())
+			{
+				if(k>0)
+				{
+					t=1;
+					System.out.print("Consonants count: ");
+					break;
+				}
+			}
+			if(t==0)
+			{
+				System.out.println("Consonants not present");
+			}
+			else
+			{
+				for(char a : map.keySet())
+				{
+					if(map.get(a)>0)
+					{
+						System.out.print(a+" : "+map.get(a));
+					}
+				}
+			}
+			line = input.nextLine();
+		
+		}
+	}
+}
+ 
