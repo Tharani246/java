@@ -1,0 +1,83 @@
+import java.util.*;
+public class Employeehobbies{
+	public static void main(String[] args){
+		HashMap<String,ArrayList<String>> map = new HashMap<>();
+		System.out.println("Enter the employee details and hobbies");
+		Scanner input = new Scanner(System.in);
+		String response = " ";
+		ArrayList<String> list = new ArrayList<String>();
+		while(true){
+			list.clear();
+			System.out.println("Enter employee id");
+			String Id = input.next();
+			System.out.println("Enter employee name");
+			String name = input.next();
+			list.add(name);
+			System.out.println("Enter employee date of birth");
+			String dob = input.next();
+			list.add(dob);
+			System.out.println("Enter employee salary");
+			String salary = input.next();
+			list.add(salary);
+			System.out.println("Enter employee designation");
+			list.add(input.next());
+			System.out.println("Enter employee hobbies");
+			list.add(input.next());
+			map.put(Id,list);
+			System.out.println("Enter Y to add employee or N to exit");
+			response = input.next();
+			if(response != "Y")
+			{
+				System.out.println("Employee details updated successfully");
+				break;
+			}
+		}
+		System.out.println("Select an action");
+		System.out.println("1.To view all the employee details and hobbies");
+		System.out.println("2.To view particular employee details and hobbies");
+		System.out.println("3.Delete an employee");
+		System.out.println("4.Exit");
+		response = input.next();
+		switch(Integer.valueOf(response)){
+			case 1:
+			{
+				for(String a:map.keySet()){
+					System.out.println("Employee Id:"+a);
+					System.out.println("Name :"+map.get(a).get(0));
+					System.out.println("Date of Birth :"+map.get(a).get(1));
+					System.out.println("Salary :"+map.get(a).get(2));
+					System.out.println("Designation :"+map.get(a).get(3));
+					System.out.println("Hobbies :"+map.get(a).get(4));
+				}
+				break;
+			}
+			case 2:
+			{
+				System.out.println("Enter Employee Id");
+				response = input.next();
+				System.out.println("Employee Id :"+response);
+				System.out.println("Name :"+map.get(response).get(0));
+				System.out.println("Date of Birth :"+map.get(response).get(1));
+				System.out.println("Salary :"+map.get(response).get(2));
+				System.out.println("Designation :"+map.get(response).get(3));
+				System.out.println("Hobbies :"+map.get(response).get(4));
+				break;
+			}
+			case 3:
+			{
+				System.out.println("Enter Employee Id");
+				response = input.next();
+				if(map.containsKey(response)){
+					map.remove(response);
+					System.out.println("Deleted Successfully");
+				}
+				else{
+					System.out.println("Employee Id doesn't exist");
+				}
+				break;
+			}
+		}
+	}
+}
+
+				
